@@ -94,3 +94,20 @@ def turns_to_conversation(turns: List[Turn]) -> List[Dict[str, str]]:
     List[Dict[str, str]]: The conversation data in the conversational format, defined by HuggingFace.
     """
     return [{"role": turn.role, "content": turn.main} for turn in turns]
+
+
+def turns_to_pptraw(turns: List[Turn]) -> str:
+    lines = []
+    put = lines.append
+    for turn in turns:
+        put(turn.main)
+        put("")
+        for chosen_content in turn.chosens:
+            put("+ " + chosen_content)
+            put("")
+        for rejected_content in turn.rejecteds:
+            put("- " + rejected_content)
+            put("")
+        put("")
+    pptraw = "\n".join(lines)
+    return pptraw

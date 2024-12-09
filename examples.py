@@ -1,4 +1,4 @@
-from .turns import pptraw_to_turns, turns_to_conversation
+from .turns import pptraw_to_turns, turns_to_conversation, turns_to_pptraw
 from .preferences import create_preference_samples
 from pprint import pprint
 
@@ -51,3 +51,7 @@ def perform_example():
     preference_samples = create_preference_samples(turns)
     pprint(preference_samples)
     print()
+
+    print("Plain-Preference-Text Format Text (Restored from `turns`):")
+    pptraw_restored = turns_to_pptraw(turns)
+    print(pptraw_restored)
