@@ -52,6 +52,6 @@ def perform_example():
     pprint(preference_samples)
     print()
 
-    print("Plain-Preference-Text Format Text (Restored from `turns`):")
+    print("Plain-Preference-Tree Format Text (Restored from `turns`):")
     pptraw_restored = turns_to_pptraw(turns)
     print(pptraw_restored)
