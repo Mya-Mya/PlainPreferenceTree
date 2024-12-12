@@ -22,13 +22,20 @@ class PPTParserV1(PPTParser):
                     break
             return "\n".join(read_lines)
 
-        # First body should be user's turn
-        turn = Turn(role="user", main=read_body())
+        # First turn should be user's
+        body = read_body()
+        turn = Turn(role="user", main=body)
+
+        def push_turn(turn: Turn) -> Turn:
+            pt.append(turn)
+            new_role = CHANGE_ROLE[turn.role]
+            turn = Turn(role=new_role, main=body)
+            return turn
 
         while lines:
             body = read_body()
             if body == "":
-                body += "\n"
+                turn = push_turn(turn)
                 continue
             sign = body[0]
             content = body[1:]
@@ -37,9 +44,7 @@ class PPTParserV1(PPTParser):
                     Subnode(type=SIGN_TO_SUBNODETYPE[sign], content=content)
                 )
             else:
-                pt.append(turn)
-                new_role = CHANGE_ROLE[turn.role]
-                turn = Turn(role=new_role, main=body)
+                turn = push_turn(turn)
         pt.append(turn)
         return pt
 
