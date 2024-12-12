@@ -2,6 +2,7 @@ from .pptparser import PPTParser
 from .pt import Turn, Subnode, PT
 
 CHANGE_ROLE = {"user": "assistant", "assistant": "user"}
+SIGN_TO_SUBNODETYPE = {"+": "upvoted", "-": "downvoted", "*": "writing", "?": "unrated"}
 
 
 class PPTParserV1(PPTParser):
@@ -31,14 +32,10 @@ class PPTParserV1(PPTParser):
                 continue
             sign = body[0]
             content = body[1:]
-            if sign == "+":
-                turn.subnodes.append(Subnode(type="upvoted", content=content))
-            elif sign == "-":
-                turn.subnodes.append(Subnode(type="downvoted", content=content))
-            elif sign == "*":
-                turn.subnodes.append(Subnode(type="writing", content=content))
-            elif sign == "?":
-                turn.subnodes.append(Subnode(type="unrated", content=content))
+            if sign in SIGN_TO_SUBNODETYPE:
+                turn.subnodes.append(
+                    Subnode(type=SIGN_TO_SUBNODETYPE[sign], content=content)
+                )
             else:
                 pt.append(turn)
                 new_role = CHANGE_ROLE[turn.role]
