@@ -1,6 +1,5 @@
-from typing import List
 from abc import ABC, abstractmethod
-from .pt import Turn, PT
+from .pt import PT
 
 
 class PPTParser(ABC):
