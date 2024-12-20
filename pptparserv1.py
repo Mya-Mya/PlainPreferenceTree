@@ -53,6 +53,9 @@ class PPTParserV1(PPTParser):
 
         def put(content: str):
             content_lines = content.splitlines()
+            if not content_lines:
+                lines.append("")
+                return
             lines.append(content_lines.pop(0))
             for line in content_lines:
                 lines.append(":" + line)
