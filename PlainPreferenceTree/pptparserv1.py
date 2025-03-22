@@ -1,5 +1,5 @@
 from .pptparser import PPTParser
-from .pt import Turn, Subnode, PT
+from PlainPreferenceTree.pt import Turn, Subnode, PT
 
 CHANGE_ROLE = {"user": "assistant", "assistant": "user"}
 SIGN_TO_SUBNODETYPE = {"+": "upvoted", "-": "downvoted", "*": "writing", "?": "unrated"}
