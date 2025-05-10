@@ -7,3 +7,4 @@ from .pt import (
 )
 from .pptparser import PPTParser
 from .pptparserv1 import PPTParserV1
+from .pptparserv2 import PPTParserV2
