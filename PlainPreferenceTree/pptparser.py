@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from .pt import PT
+from PlainPreferenceTree.pt import PT
 
 
 class PPTParser(ABC):
