@@ -1,7 +1,7 @@
 from typing import Iterator, List, Dict, Optional
 from threading import Thread
 from asyncio import Event
-from .gradiostreaming import Inferencer
+from ..PlainPreferenceTree.gradiostreaming import Inferencer
 from transformers import GenerationMixin, AutoTokenizer, TextIteratorStreamer, StoppingCriteria, GenerationConfig
 from torch import inference_mode, tensor
 

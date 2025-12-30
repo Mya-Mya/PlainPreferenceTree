@@ -20,16 +20,16 @@ class Turn:
 
     def collect_subnotde_contents_by(self, type: str) -> List[str]:
         return [n.content for n in self.collect_subnodes_by(type)]
-    
+
     def collect_upvoteds(self)->List[Subnode]:
         return self.collect_subnodes_by("upvoted")
-    
+
     def collect_downvoteds(self)->List[Subnode]:
         return self.collect_subnodes_by("downvoted")
-    
+
     def collect_writings(self)->List[Subnode]:
         return self.collect_subnodes_by("writing")
-    
+
     def collect_unrateds(self)->List[Subnode]:
         return self.collect_subnodes_by("unrated")
 

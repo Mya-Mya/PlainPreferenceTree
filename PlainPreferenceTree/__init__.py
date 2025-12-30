@@ -9,4 +9,4 @@ from .pptparser import PPTParser
 from .pptparserv1 import PPTParserV1
 from . import gradiostreaming
 from . import dummyinferencer
-from . import transformerllminferencer
+from ..Examples import transformerllminferencer
